@@ -1,0 +1,46 @@
+<div class="container">
+  <div class="row">
+    <div class="col-2">
+      <h6>{{storeName | uppercase}}</h6> 
+    </div>
+    <div class="col-3">
+      <img [src]="storeLogo" [ngStyle]="styleCol">
+    </div>
+    <div class="col-7">
+      <h3 *ngIf="checkDiscount()">We offer an explicit discount of  {{discount |percent }} </h3>
+    </div>
+  </div>
+
+</div>
+
+
+  <div *ngIf="isPurshased; then  thenblock; else elseBlock">
+  </div>
+  <ng-template #elseBlock>
+    <table class="table table-striped">
+      <tbody>
+        <div *ngFor="let product of productList">
+          <tr>
+            <td>{{product.id}}</td>
+            <td>{{product.name}}</td>
+            <td>{{product.quantity}}</td>
+            <td>{{product.price}}</td>
+            <td>{{product.Img}}</td>
+          </tr>
+        </div>
+      </tbody>
+
+    </table>
+  </ng-template>
+
+
+<input type="text" [(ngModel)]="clientName">
+{{clientName}}
+<br>
+<button type="button" class="btn btn-primary" (click) ="makepurshe()">Purshe</button>
+
+ 
+<ng-template #thenblock>
+  <h6>Thanks for purchasing from our Store {{clientName}}</h6>
+
+</ng-template>
