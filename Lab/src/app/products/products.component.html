@@ -14,33 +14,37 @@
 </div>
 
 
-  <div *ngIf="isPurshased; then  thenblock; else elseBlock">
-  </div>
-  <ng-template #elseBlock>
-    <table class="table table-striped">
-      <tbody>
-        <div *ngFor="let product of productList">
-          <tr>
-            <td>{{product.id}}</td>
-            <td>{{product.name}}</td>
-            <td>{{product.quantity}}</td>
-            <td>{{product.price}}</td>
-            <td>{{product.Img}}</td>
-          </tr>
-        </div>
-      </tbody>
-
-    </table>
-  </ng-template>
-
 
 <input type="text" [(ngModel)]="clientName">
 {{clientName}}
 <br>
 <button type="button" class="btn btn-primary" (click) ="makepurshe()">Purshe</button>
 
+
+<div *ngIf="isPurshased; then  thenblock; else elseBlock">
+</div>
+<ng-template #elseBlock>
+  <table class="table table-striped">
+    <tbody>
+      <div *ngFor="let product of productList">
+        <tr>
+          <td>{{product.id}}</td>
+          <td>{{product.name}}</td>
+          <td>{{product.quantity}}</td>
+          <td>{{product.price}}</td>
+          <td>{{product.Img}}</td>
+        </tr>
+      </div>
+    </tbody>
+
+  </table>
+</ng-template>
+
  
 <ng-template #thenblock>
-  <h6>Thanks for purchasing from our Store {{clientName}}</h6>
+  <h6 style="margin: 100px;">Thanks for purchasing from our Store {{clientName}}</h6>
 
 </ng-template>
+<button type="button" class="btn btn-danger m-1" (click)="goToDiscount()" >Product with discount</button>
+<button type="button" class="btn btn-danger m-1" (click)="goToNoDiscount()" >Product without discount</button>
+<router-outlet></router-outlet>

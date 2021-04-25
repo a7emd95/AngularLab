@@ -1,0 +1,46 @@
+<div class="container">
+    <form [formGroup]="noteForm">
+        <div class="form-group">
+            <label>Name</label>
+            <input formControlName="Name" [class.is-invalid]="Name.invalid && Name.touched" type="text"
+                class="form-control" />
+            <div *ngIf=" Name.errors && (Name.invalid && Name.touched)">
+                <small class="text-danger" *ngIf="Name.errors?.required"> name is required </small>
+                <small *ngIf="Name.errors?.forbiddenName"> Admin  is not allowed </small>
+            </div>
+
+            <div class="form-group">
+                <select class="custom-select" name="ddlProduct"  formControlName="products"  >
+                  <option selected >
+                     Product
+                  </option>
+                   
+                  <option *ngFor="let product of products">{{product}}
+                  </option>
+                </select>
+              </div>
+    
+        </div>
+
+        <!-- <div class=form-group   *ngIf="contrlols.check.value"> 
+        <input type="number" class="form-control"  formControllName="discount">
+        </div>
+         <div class="form-check">  
+            <input type="checkbox" formControlName="check">
+        </div>    -->
+
+        
+
+        <button (click)="addNewComment()">ADD NEW Comment</button>
+
+        <div formArrayName="Comments" *ngFor="let comment of  comments.controls; let i=index">
+                  <label>Alternative email # {{i+1}}</label>
+                  <input type="text" class="form-control" [formControlName]="i">
+                  
+        </div>
+     
+
+  
+
+
+
